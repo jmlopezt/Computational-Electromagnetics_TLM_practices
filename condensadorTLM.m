@@ -9,10 +9,10 @@
 clear all; close all; clc;
 
 z0 = 75;                          % impedancia caracteristica de la linea (ohmios)
-zl = 1.0e-9;                      % impedancia de carga 1nF
+zl = 20.0e-6;                      % impedancia de carga 1nF
 deltat = 1.0e-9;                  % incremento temporal utilizado en la solución numérica
 timefinal = 300.0e-9;             % instante temporal final del calculo
-zc = deltat/(2.0*zl);             % impedancia equivalente del condensador
+zc = (2.0*zl)/deltat;             % impedancia equivalente del condensador
 ntemp = int16(timefinal/deltat);  % número de instantes temporales para el calculo
 
 % continue ...
