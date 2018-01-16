@@ -1,25 +1,25 @@
-%% An醠isis de Transitorios en una L韓ea de Transmisi髇 (LT)
-% * An醠isis te髍ico y num閞ico (TLM) de transitorios en l韓eas con cargas capacitivas.
+%% An谩lisis de Transitorios en una L铆nea de Transmisi贸n (LT)
+% * An谩lisis te贸rico y num茅rico (TLM) de transitorios en l铆neas con cargas capacitivas.
 %
 %
-%% An醠isis Num閞ico (TLM): transitorio en una LT con carga capacitiva con 3 nodos
-% En este apartado se muestra la soluci髇 num閞ica.
+%% An谩lisis Num茅rico (TLM): transitorio en una LT con carga capacitiva con 3 nodos
+% En este apartado se muestra la soluci贸n num茅rica.
 %
 % Inicializamos variables
 clear all; close all; clc;
 
 z0 = 75;                          % impedancia caracteristica de la linea (ohmios)
-zl = 20.0e-6;                      % impedancia de carga 1nF
-deltat = 1.0e-9;                  % incremento temporal utilizado en la soluci髇 num閞ica
+zl = 1.0e-9;                      % impedancia de carga 1nF
+deltat = 1.0e-9;                  % incremento temporal utilizado en la soluci贸n num茅rica
 timefinal = 300.0e-9;             % instante temporal final del calculo
-zc = (2.0*zl)/deltat;             % impedancia equivalente del condensador
-ntemp = int16(timefinal/deltat);  % n鷐ero de instantes temporales para el calculo
+zc = deltat/(2.0*zc);             % impedancia equivalente del condensador
+ntemp = int16(timefinal/deltat);  % n煤mero de instantes temporales para el calculo
 
 % continue ...
 
 r = 50;                           % Resistencia de la fuente
-L = 1.0e-9;                       % Impedandia de la bobina
-z_Bobina = deltat/(2.0*L);        % impedancia equivalente de la bobina
+L = 20.0e-6;                       % Impedandia de la bobina
+z_Bobina = (2.0*L)/deltat;        % impedancia equivalente de la bobina
 z_source = r + z_Bobina;          % Impedancia equivalente de la fuente
 
 tau1=5.0e-9;
@@ -65,10 +65,10 @@ plot(1e9*t,vc_inc,'g');
 plot(1e9*t, v_Right_ini_inc,'r');
 plot(1e9*t,v_Left_m_inc,'k');
 plot(1e9*t, v_Right_m_inc,'m');
-xlabel('Tiempo (ns)'); ylabel('Tensi髇 (V)')
+xlabel('Tiempo (ns)'); ylabel('Tensi贸n (V)')
 %legend('V^+(t) ','V^-_{TLM}','V^-_{teor}(t)')
 grid
-title('Soluci髇 num閞ica (TLM), transitorio sobre carga capacitiva 1nF')
+title('Soluci贸n num茅rica (TLM), transitorio sobre carga capacitiva 1nF')
 
 %% Plot de voltajes reflejados
 
@@ -81,7 +81,7 @@ plot(1e9*t,vc_ref,'g');
 plot(1e9*t, v_Right_ini_ref,'r');
 plot(1e9*t,v_Left_m_ref,'k');
 plot(1e9*t, v_Right_m_ref,'m');
-xlabel('Tiempo (ns)'); ylabel('Tensi髇 (V)')
+xlabel('Tiempo (ns)'); ylabel('Tensi贸n (V)')
 %legend('V^+(t) ','V^-_{TLM}','V^-_{teor}(t)')
 grid
-title('Soluci髇 num閞ica (TLM), transitorio sobre carga capacitiva 1nF')
+title('Soluci贸n num茅rica (TLM), transitorio sobre carga capacitiva 1nF')
