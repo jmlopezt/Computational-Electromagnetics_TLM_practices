@@ -66,7 +66,7 @@ plot(1e9*t, v_Right_ini_inc,'r');
 plot(1e9*t,v_Left_m_inc,'k');
 plot(1e9*t, v_Right_m_inc,'m');
 xlabel('Tiempo (ns)'); ylabel('Tensión (V)')
-legend('Vc_{inc} ','V_{Right ini inc}','V_{Left m inc}','V_{Right m inc}')
+legend('V^+ ','Vc_{inc} ','V_{Right ini inc}','V_{Left m inc}','V_{Right m inc}')
 grid
 title('Solución numérica(TLM): Voltajes incidentes ')
 
@@ -82,6 +82,6 @@ plot(1e9*t, v_Right_ini_ref,'r');
 plot(1e9*t,v_Left_m_ref,'k');
 plot(1e9*t, v_Right_m_ref,'m');
 xlabel('Tiempo (ns)'); ylabel('Tensión (V)')
-legend('Vc_{ref} ','V_{Right ini ref}','V_{Left m ref}','V_{Right m ref}')
+legend('V_{Source} ','Vc_{ref} ','V_{Right ini ref}','V_{Left m ref}','V_{Right m ref}')
 grid
 title('Solución numérica(TLM): Voltajes reflejados ')
