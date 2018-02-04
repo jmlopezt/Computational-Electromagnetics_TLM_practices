@@ -12,13 +12,13 @@ z0 = 75;                          % impedancia caracteristica de la linea (ohmio
 zl = 1.0e-9;                      % impedancia de carga 1nF
 deltat = 1.0e-9;                  % incremento temporal utilizado en la soluci贸n num茅rica
 timefinal = 300.0e-9;             % instante temporal final del calculo
-zc = deltat/(2.0*zc);             % impedancia equivalente del condensador
+zc = deltat/(2.0*zl);             % impedancia equivalente del condensador
 ntemp = int16(timefinal/deltat);  % n煤mero de instantes temporales para el calculo
 
 % continue ...
 
 r = 50;                           % Resistencia de la fuente
-L = 20.0e-6;                       % Impedandia de la bobina
+L = 0;                       % Impedandia de la bobina
 z_Bobina = (2.0*L)/deltat;        % impedancia equivalente de la bobina
 z_source = r + z_Bobina;          % Impedancia equivalente de la fuente
 
@@ -28,7 +28,7 @@ v0=4.0;
 t=0:deltat:timefinal;
 
 vSource=4.0*v0*(-exp(-t/tau1)+exp(-t/tau2));
-vBobina=4.0*v0*(-exp(-t/tau1)+exp(-t/tau2)); % esto hay que calcularlo bien, esta copiado por motivos de test
+vBobina=zeros(1,length(vSource)); % esto hay que calcularlo bien, esta copiado por motivos de test
 
 
 v_Right_ini_ref = zeros(1,ntemp+1);
@@ -65,10 +65,10 @@ plot(1e9*t,vc_inc,'g');
 plot(1e9*t, v_Right_ini_inc,'r');
 plot(1e9*t,v_Left_m_inc,'k');
 plot(1e9*t, v_Right_m_inc,'m');
-xlabel('Tiempo (ns)'); ylabel('Tensi贸n (V)')
-%legend('V^+(t) ','V^-_{TLM}','V^-_{teor}(t)')
+xlabel('Tiempo (ns)'); ylabel('Tensi髇 (V)')
+legend('Vc_{inc} ','V_{Right ini inc}','V_{Left m inc}','V_{Right m inc}')
 grid
-title('Soluci贸n num茅rica (TLM), transitorio sobre carga capacitiva 1nF')
+title('Soluci髇 num閞ica(TLM): Voltajes incidentes ')
 
 %% Plot de voltajes reflejados
 
@@ -81,7 +81,7 @@ plot(1e9*t,vc_ref,'g');
 plot(1e9*t, v_Right_ini_ref,'r');
 plot(1e9*t,v_Left_m_ref,'k');
 plot(1e9*t, v_Right_m_ref,'m');
-xlabel('Tiempo (ns)'); ylabel('Tensi贸n (V)')
-%legend('V^+(t) ','V^-_{TLM}','V^-_{teor}(t)')
+xlabel('Tiempo (ns)'); ylabel('Tensi髇 (V)')
+legend('Vc_{ref} ','V_{Right ini ref}','V_{Left m ref}','V_{Right m ref}')
 grid
-title('Soluci贸n num茅rica (TLM), transitorio sobre carga capacitiva 1nF')
+title('Soluci髇 num閞ica(TLM): Voltajes reflejados ')
